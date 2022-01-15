@@ -39,6 +39,7 @@ export interface InsectProps {
   onSelect?: (value: string | string[] | null, name: string) => void;
   closeOnBlur?: boolean;
   allowMultiple?: number;
+  search?: boolean;
 }
 
 export const Insect = ({
@@ -65,6 +66,7 @@ export const Insect = ({
   iconsClass,
   dropdownClass,
   checkerClass,
+  search,
 }: InsectProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -73,6 +75,7 @@ export const Insect = ({
   const [selected, setSelected] = useState<string>("");
   const [selecteds, setSelecteds] = useState<any>({});
   const [selectedsValue, setSelectedsValue] = useState<any>({});
+  const [filter, setFilter] = useState<string>("");
 
   const inputValue =
     type === "select" && allowMultiple
@@ -85,13 +88,21 @@ export const Insect = ({
       ? value
       : "";
 
+  const filteredDropdown = options?.filter((option) =>
+    option.title.toLowerCase().includes(filter.toLowerCase())
+  );
+
   const handleSelect = (title: string, value: string) => {
     if (!onSelect) {
       return;
     }
 
+    // reset filter
+    setFilter("");
+
     // set or unset single value if multiple is off
     if (!allowMultiple) {
+      // update state and return value to parent
       selected === name
         ? [onSelect(null, name), setSelected("")]
         : [onSelect(value, name), setSelected(title)];
@@ -130,6 +141,23 @@ export const Insect = ({
           breakLoop = true;
         }
       });
+    }
+  };
+
+  const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
+    const strippedValue = value.split(", ");
+    setFilter(strippedValue[strippedValue.length - 1]);
+  };
+
+  const formatFilterText = () => {
+    const previousItemsPresent =
+      !!selected || Object.values(selecteds)?.length !== 0;
+
+    if (previousItemsPresent && allowMultiple) {
+      return `${inputValue}, ${filter}`;
+    } else {
+      return filter;
     }
   };
 
@@ -206,7 +234,7 @@ export const Insect = ({
     window.addEventListener("resize", setPosition);
 
     return () => window.removeEventListener("resize", setPosition);
-  }, [showDD]);
+  }, [showDD, filter]);
 
   return (
     <div className={`insect ${className}`}>
@@ -234,18 +262,26 @@ export const Insect = ({
           </figure>
         )}
 
-        <input
-          name={name}
-          className={`insect_input ${inputClass}`}
-          type={type}
-          placeholder={placeholder}
-          onChange={onChange || (() => null)}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          value={inputValue}
-          ref={inputRef}
-          autoComplete={type === "select" ? "off" : "true"}
-        />
+        {search && showDD ? (
+          <input
+            className={`insect_input ${inputClass}`}
+            value={formatFilterText()}
+            onChange={handleSearch}
+          />
+        ) : (
+          <input
+            name={name}
+            className={`insect_input ${inputClass}`}
+            type={type}
+            placeholder={placeholder}
+            onChange={onChange || (() => null)}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            value={inputValue}
+            ref={inputRef}
+            autoComplete={type === "select" ? "off" : "true"}
+          />
+        )}
 
         {!!suffixIcon && (
           <figure className={`insect_icon ${iconsClass}`}>
@@ -258,7 +294,10 @@ export const Insect = ({
         )}
 
         {type === "select" && (
-          <figure className={`insect_icon ${iconsClass}`} data-icon-type="caret">
+          <figure
+            className={`insect_icon ${iconsClass}`}
+            data-icon-type="caret"
+          >
             {!dropdownIcon ? (
               <svg
                 width="25"
@@ -288,7 +327,9 @@ export const Insect = ({
             onClick={(e) => !!allowMultiple && e.stopPropagation()}
           >
             <ul className="insect_dd-menu">
-              {(!options || options.length === 0) && (
+              {(!options ||
+                options.length === 0 ||
+                filteredDropdown?.length === 0) && (
                 <li className="insect_dd-item" data-empty>
                   <svg
                     width="35px"
@@ -306,7 +347,7 @@ export const Insect = ({
                 </li>
               )}
 
-              {options?.map(({ title, value }, index) => (
+              {filteredDropdown?.map(({ title, value }, index) => (
                 <li
                   key={index}
                   className="insect_dd-item"
