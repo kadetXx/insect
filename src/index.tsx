@@ -151,8 +151,12 @@ export const Insect = ({
   };
 
   const formatFilterText = () => {
-    const previousItemsPresent =
-      !!selected || Object.values(selecteds)?.length !== 0;
+    const allSelectedValues = flattenObj(selectedsValue);
+    const selectedItemAbsent =
+      allSelectedValues.filter((item) => item === null).length ===
+      allowMultiple;
+
+    const previousItemsPresent = !!selected || !selectedItemAbsent;
 
     if (previousItemsPresent && allowMultiple) {
       return `${inputValue}, ${filter}`;
