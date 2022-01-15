@@ -75,7 +75,7 @@ $col-black: #424242;
   }
 }
 
-.insect_wrapper[data-focused="true"] [data-icon-type="drop"] {
+.insect_wrapper[data-focused="true"] [data-icon-type="caret"] {
   transition: all 0.3s linear;
   transform: rotate(-180deg);
 }

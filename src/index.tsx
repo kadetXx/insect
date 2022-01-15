@@ -258,7 +258,7 @@ export const Insect = ({
         )}
 
         {type === "select" && (
-          <figure className={`insect_icon ${iconsClass}`} data-icon-type="drop">
+          <figure className={`insect_icon ${iconsClass}`} data-icon-type="caret">
             {!dropdownIcon ? (
               <svg
                 width="25"
