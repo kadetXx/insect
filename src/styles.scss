@@ -1,0 +1,165 @@
+// variables
+$col-white: #ffffff;
+$col-black: #424242;
+
+// mixins
+@mixin flex(
+  $justify: flex-start,
+  $align: flex-start,
+  $flow: row nowrap,
+  $column-gap: 0,
+  $row-gap: 0
+) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: nowrap;
+  flex-flow: $flow;
+  gap: $row-gap $column-gap;
+}
+
+// main styles
+.insect {
+  width: 100%;
+  display: flex;
+  @include flex(flex-start, flex-start, column, 0, 0.8rem);
+}
+
+.insect_label {
+  font-size: 1.6rem;
+  line-height: 152.2%;
+  color: $col-black;
+  font-weight: 400;
+}
+
+.insect_wrapper {
+  position: relative;
+  width: 100%;
+  padding: 0 1.2rem;
+  transition: all 0.1s ease-in;
+  background-color: $col-white;
+  border: 1px solid rgba($col-black, 0.2);
+
+  @include flex(flex-start, center, row, 1rem);
+
+  &:focus-within {
+    transition: all 0.2s linear;
+    border-color: rgba($col-black, 0.5);
+  }
+
+  &[data-focused="true"] {
+    border-color: rgba($col-black, 0.5);
+  }
+
+  &[data-icon="suffix"] {
+    @include flex(space-between, center, row, 0, 0);
+  }
+
+  &[data-type="select"] {
+    cursor: pointer;
+  }
+}
+
+.insect_icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  position: relative;
+  pointer-events: none;
+  transition: all 0.3s linear;
+
+  img,
+  svg {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.insect_wrapper[data-focused="true"] [data-icon-type="drop"] {
+  transition: all 0.3s linear;
+  transform: rotate(-180deg);
+}
+
+.insect_input {
+  all: unset;
+  flex-grow: 1;
+  padding-right: 1.5rem;
+  height: 100%;
+  font-size: 1.6rem;
+  min-height: 1.5rem;
+  padding: 1.2rem 1.2rem 1.2rem 0;
+  color: $col-black;
+
+  &::placeholder {
+    color: rgba($col-black, 0.4);
+  }
+
+  &[type="select"] {
+    cursor: pointer;
+    caret-color: transparent;
+  }
+}
+
+.insect_dd {
+  position: absolute;
+  min-height: 5rem;
+  max-height: 25.6rem;
+  overflow-y: auto;
+  left: -1px;
+  right: -1px;
+  padding: 1rem 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px 0 rgba($col-black, 0.08);
+  z-index: z("level-three");
+}
+
+.insect_dd-menu {
+  @include flex(flex-start, flex-start, column);
+}
+
+.insect_dd-item {
+  padding: 1.5rem 2rem;
+  font-size: 1.6rem;
+  width: 100%;
+  transition: all 0.2s linear;
+
+  @include flex(space-between, center);
+
+  &:hover {
+    background-color: rgba($col-black, 0.1);
+    transition: all 0.2s linear;
+  }
+
+  &[data-disabled="true"] {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  &[data-empty] {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    font-size: 1.3rem;
+    color: rgba($col-black, 0.4);
+
+    @include flex(center, center, column, 0, 0.8rem);
+
+    &:hover {
+      background-color: inherit;
+    }
+  }
+}
+
+.insect_dd-item_icon {
+  width: 1.8rem;
+  height: 1.7rem;
+  position: relative;
+}
+
+.insect_svg,
+.insect_image {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
