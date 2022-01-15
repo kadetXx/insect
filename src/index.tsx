@@ -8,7 +8,7 @@ import {
   useRef,
 } from "react";
 
-import { flattenObj } from "@/utils";
+// import { flattenObj } from "@/utils";
 
 export interface InsectOption {
   title: string;
@@ -74,15 +74,13 @@ export const Insect = ({
   const ddRef = useRef<HTMLDivElement>(null);
   const [showDD, setShowDD] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>("");
-  const [selecteds, setSelecteds] = useState<any>({});
-  const [selectedsValue, setSelectedsValue] = useState<any>({});
+  const [selecteds, setSelecteds] = useState<string[]>([]);
+  const [selectedsValue, setSelectedsValue] = useState<string[]>([]);
   const [filter, setFilter] = useState<string>("");
 
   const inputValue =
     type === "select" && allowMultiple
-      ? Object.values(selecteds)
-          .filter((item) => item !== null)
-          .join(", ")
+      ? selecteds?.filter((item) => item !== null).join(", ")
       : type === "select"
       ? selected
       : value
@@ -110,38 +108,57 @@ export const Insect = ({
     }
 
     if (!!allowMultiple) {
-      let breakLoop = false;
+      // check if selected item is already present
+      const isPresent = selecteds?.find((item) => item === title);
+      const spaceAvailable = selecteds?.length < allowMultiple;
+
+      if (isPresent) {
+        const newOptions = selecteds.filter((option) => option !== title);
+        const newValues = selectedsValue.filter((option) => option !== value);
+
+        setSelecteds(newOptions);
+        setSelectedsValue(newValues);
+      } else if (spaceAvailable) {
+        const previousOptions = [...selecteds];
+        const previousValues = [...selectedsValue];
+
+        previousOptions.push(title);
+        previousValues.push(value);
+
+        setSelecteds(previousOptions);
+        setSelectedsValue(previousValues);
+      }
+      // let breakLoop = false;
 
       // map through object, check for the one with empty
-      Object.keys(selecteds).forEach((key) => {
-        // append titles & values if there is an empty space
-        if (selecteds[key] === title) {
-          // remove titles & values if the option is already present
-          setSelecteds({
-            ...selecteds,
-            [key]: null,
-          });
+      // Object.keys(selecteds).forEach((key) => {
+      // append titles & values if there is an empty space
+      // if (selecteds[key] === title) {
+      //   // remove titles & values if the option is already present
+      //   setSelecteds({
+      //     ...selecteds,
+      //     [key]: null,
+      //   });
 
-          setSelectedsValue({
-            ...selectedsValue,
-            [key]: null,
-          });
+      //   setSelectedsValue({
+      //     ...selectedsValue,
+      //     [key]: null,
+      //   });
 
-          breakLoop = true;
-        } else if (selecteds[key] === null && !breakLoop) {
-          setSelecteds({
-            ...selecteds,
-            [key]: title,
-          });
+      //   breakLoop = true;
+      // } else if (selecteds[key] === null && !breakLoop) {
+      //   setSelecteds({
+      //     ...selecteds,
+      //     [key]: title,
+      //   });
 
-          setSelectedsValue({
-            ...selectedsValue,
-            [key]: value,
-          });
+      //   setSelectedsValue({
+      //     ...selectedsValue,
+      //     [key]: value,
+      //   });
 
-          breakLoop = true;
-        }
-      });
+      //   breakLoop = true;
+      // }
     }
   };
 
@@ -152,12 +169,9 @@ export const Insect = ({
   };
 
   const formatFilterText = () => {
-    const allSelectedValues = flattenObj(selectedsValue);
-    const selectedItemAbsent =
-      allSelectedValues.filter((item) => item === null).length ===
-      allowMultiple;
-
-    const previousItemsPresent = !!selected || !selectedItemAbsent;
+    // const allSelectedValues = flattenObj(selectedsValue);
+    const selectedItemsPresent = selecteds?.length > 0;
+    const previousItemsPresent = !!selected || selectedItemsPresent;
 
     if (previousItemsPresent && allowMultiple) {
       return `${inputValue}, ${filter}`;
@@ -167,38 +181,16 @@ export const Insect = ({
   };
 
   const isSelected = (title: string) => {
-    return Object.values(selecteds).includes(title);
+    return selecteds.includes(title);
   };
 
   const totalSelected = useCallback(() => {
-    return Object.values(selecteds).filter((item) => item !== null).length;
+    return selecteds.length;
   }, [selectedsValue]);
-
-  // initialize multiple options
-  useEffect(() => {
-    if (allowMultiple) {
-      // fill the selecteds with the number of multiple options
-      const array: any[] = Array.from(Array(allowMultiple).keys());
-
-      const emptyState: any = array.reduce((obj, current) => {
-        obj = {
-          ...obj,
-          [current]: null,
-        };
-
-        return obj;
-      }, {});
-
-      setSelecteds(emptyState);
-      setSelectedsValue(emptyState);
-    }
-  }, [allowMultiple]);
 
   useEffect(() => {
     if (onSelect && allowMultiple) {
-      const allValues = flattenObj(selectedsValue);
-      const filteredValues = allValues.filter((item) => item !== null);
-      onSelect(filteredValues, name);
+      onSelect(selectedsValue, name);
     }
   }, [selectedsValue]);
 
@@ -382,7 +374,7 @@ export const Insect = ({
                           <path
                             d="M9.80469 16.5002L14.4714 21.1669L24.4714 11.1669"
                             stroke="#4CAF50"
-                            stroke-width="1.95162"
+                            strokeWidth="1.95162"
                           />
                         </svg>
                       ) : checkmarkIcon && typeof checkmarkIcon === "string" ? (
@@ -411,7 +403,7 @@ export const Insect = ({
                           <path
                             d="M9.80469 16.5002L14.4714 21.1669L24.4714 11.1669"
                             stroke="#4CAF50"
-                            stroke-width="1.95162"
+                            strokeWidth="1.95162"
                           />
                         </svg>
                       ) : checkmarkIcon && typeof checkmarkIcon === "string" ? (
