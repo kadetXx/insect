@@ -259,12 +259,13 @@ export const Insect = ({
           </figure>
         )}
 
-        {search && showDD ? (
+        {search && showDD && (allowMultiple && selecteds.length < allowMultiple) ? (
           <input
             className={`insect_input ${inputClass}`}
             value={formatFilterText()}
             onChange={handleSearch}
             ref={searchRef}
+            data-search
           />
         ) : (
           <input

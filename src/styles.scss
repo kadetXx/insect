@@ -98,6 +98,10 @@ $col-black: #424242;
     cursor: pointer;
     caret-color: transparent;
   }
+
+  &[data-search] {
+    cursor: text;
+  }
 }
 
 .insect_dd {
