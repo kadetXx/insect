@@ -1,5 +1,4 @@
 import * as React from "react";
-// import * as PropTypes from "prop-types";
 import "./styles.scss";
 import {
   useState,
@@ -384,32 +383,5 @@ export const Insect = ({
     </div>
   );
 };
-
-// Insect.propTypes = {
-//   placeholder: PropTypes.string,
-//   prefixIcon: PropTypes.string,
-//   suffixIcon: PropTypes.string,
-//   value: PropTypes.string,
-//   label: PropTypes.string,
-//   name: PropTypes.string,
-//   className: PropTypes.string,
-//   wrapperClass: PropTypes.string,
-//   dropdownClass: PropTypes.string,
-//   type: PropTypes.oneOf(["text", "number", "password", "select"]),
-//   options: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       title: PropTypes.string,
-//       value: PropTypes.string,
-//     })
-//   ),
-//   onChange: PropTypes.func,
-//   onBlur: PropTypes.func,
-//   onFocus: PropTypes.func,
-//   onSelect: PropTypes.func,
-//   closeOnBlur: PropTypes.bool,
-//   allowMultiple: PropTypes.bool,
-// };
-
-// Insect.defaultProps = {};
 
 export default Insect;
