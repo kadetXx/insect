@@ -8,8 +8,6 @@ import {
   useRef,
 } from "react";
 
-// import { flattenObj } from "@/utils";
-
 export interface InsectOption {
   title: string;
   value: string;
@@ -78,6 +76,8 @@ export const Insect = ({
   const [selectedsValue, setSelectedsValue] = useState<string[]>([]);
   const [filter, setFilter] = useState<string>("");
 
+  const showSearch =
+    search && showDD && allowMultiple && selecteds.length < allowMultiple;
   const inputValue =
     type === "select" && allowMultiple
       ? selecteds?.filter((item) => item !== null).join(", ")
@@ -128,37 +128,6 @@ export const Insect = ({
         setSelecteds(previousOptions);
         setSelectedsValue(previousValues);
       }
-      // let breakLoop = false;
-
-      // map through object, check for the one with empty
-      // Object.keys(selecteds).forEach((key) => {
-      // append titles & values if there is an empty space
-      // if (selecteds[key] === title) {
-      //   // remove titles & values if the option is already present
-      //   setSelecteds({
-      //     ...selecteds,
-      //     [key]: null,
-      //   });
-
-      //   setSelectedsValue({
-      //     ...selectedsValue,
-      //     [key]: null,
-      //   });
-
-      //   breakLoop = true;
-      // } else if (selecteds[key] === null && !breakLoop) {
-      //   setSelecteds({
-      //     ...selecteds,
-      //     [key]: title,
-      //   });
-
-      //   setSelectedsValue({
-      //     ...selectedsValue,
-      //     [key]: value,
-      //   });
-
-      //   breakLoop = true;
-      // }
     }
   };
 
@@ -201,7 +170,11 @@ export const Insect = ({
       } else if (showDD && !!closeOnBlur) {
         let shouldClose = true;
         const target = e.target;
-        const componentList = [containerRef.current, inputRef.current];
+        const componentList = [
+          containerRef.current,
+          inputRef.current,
+          searchRef.current,
+        ];
 
         componentList.forEach((item) => {
           target === item ? (shouldClose = false) : null;
@@ -247,7 +220,9 @@ export const Insect = ({
         data-type={type}
         data-icon={prefixIcon ? "prefix" : "suffix"}
         data-focused={type === "select" ? showDD : null}
-        onClick={() => type === "select" && setShowDD(!showDD)}
+        onClick={() => {
+          type === "select" && !showSearch && setShowDD(!showDD);
+        }}
       >
         {!!prefixIcon && (
           <figure className={`insect_icon ${iconsClass}`}>
@@ -259,7 +234,7 @@ export const Insect = ({
           </figure>
         )}
 
-        {search && showDD && (allowMultiple && selecteds.length < allowMultiple) ? (
+        {showSearch ? (
           <input
             className={`insect_input ${inputClass}`}
             value={formatFilterText()}
