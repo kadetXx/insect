@@ -70,6 +70,7 @@ export const Insect = ({
 }: InsectProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
   const ddRef = useRef<HTMLDivElement>(null);
   const [showDD, setShowDD] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>("");
@@ -271,6 +272,7 @@ export const Insect = ({
             className={`insect_input ${inputClass}`}
             value={formatFilterText()}
             onChange={handleSearch}
+            ref={searchRef}
           />
         ) : (
           <input
