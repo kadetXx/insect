@@ -2,11 +2,11 @@
 $col-white: #ffffff;
 $col-black: #424242;
 
-$unit: 16;
+$default-unit: 16;
 
 // functions
 @function rem($num) {
-  $normalised: calc(10/$unit);
+  $normalised: calc(10/$default-unit);
 
   @return calc($num * $normalised) + rem
 }
