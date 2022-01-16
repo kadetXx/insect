@@ -76,10 +76,11 @@ export const Insect = ({
   const [selectedsValue, setSelectedsValue] = useState<string[]>([]);
   const [filter, setFilter] = useState<string>("");
 
-  const searchCondiionOne = !allowMultiple && search && showDD
-  const searchConditionTwo = search && showDD && allowMultiple && selecteds.length < allowMultiple;
-  const showSearch = searchCondiionOne || searchConditionTwo
-    
+  const searchCondiionOne = !allowMultiple && search && showDD;
+  const searchConditionTwo =
+    search && showDD && allowMultiple && selecteds.length < allowMultiple;
+  const showSearch = searchCondiionOne || searchConditionTwo;
+
   const inputValue =
     type === "select" && allowMultiple
       ? selecteds?.filter((item) => item !== null).join(", ")
