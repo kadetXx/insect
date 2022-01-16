@@ -61,19 +61,19 @@ Insect can be either an input field, a single select field or a multi select fie
 ### 🧩 General props
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
-| name | Sets the name of the input field. | *`string`* | undefined
+| name | Sets the name of the input field. | *`string`* | 
 | type | Sets type of input field | *`text \| number \| password \| email \| select`* | text
-| label | Adds a label to the top of insect component. | *`string`* | undefined
+| label | Adds a label to the top of insect component. | *`string`* | 
 | placeholder | Sets the placeholder for insect component. | *`string`* | Input or select an option
-| prefixIcon | Adds an icon at the left of insect field | *`string \| React.ReactNode \| null`* | undefined
-| suffixIcon | Adds an icon at the right of insect field | *`string \| React.ReactNode \| null`* | undefined
-| className | Custom classname for main insect container | *`string`* | undefined
-| labelClass | Custom classname for insect label | *`string`* | undefined
-| inputWrapperClass | Custom classname for the input field wrapper div | *`string`* | undefined
-| inputClass | Custom classname for the main input field  | *`string`* | undefined 
-| iconsClass | Custom classname for all icons  | *`string`* | undefined 
-| onFocus | Function to trigger when input field is focused on. | *`(e: React.FocusEvent<HTMLInputElement>) => void`* | undefined
-| onBlur | Function to trigger when input field goes out of focus. | *`(e: React.FocusEvent<HTMLInputElement>) => void`* | undefined
+| prefixIcon | Adds an icon at the left of insect field | *`string \| React.ReactNode \| null`* | 
+| suffixIcon | Adds an icon at the right of insect field | *`string \| React.ReactNode \| null`* | 
+| className | Custom classname for main insect container | *`string`* | 
+| labelClass | Custom classname for insect label | *`string`* | 
+| inputWrapperClass | Custom classname for the input field wrapper div | *`string`* | 
+| inputClass | Custom classname for the main input field  | *`string`* |  
+| iconsClass | Custom classname for all icons  | *`string`* |  
+| onFocus | Function to trigger when input field is focused on. | *`(e: React.FocusEvent<HTMLInputElement>) => void`* | 
+| onBlur | Function to trigger when input field goes out of focus. | *`(e: React.FocusEvent<HTMLInputElement>) => void`* | 
 
 <br />
 <br />
@@ -82,8 +82,8 @@ Insect can be either an input field, a single select field or a multi select fie
 
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
-| value | Sets the value of the input field. | *`string`* | undefined
-| onChange | Sets the placeholder for insect component. | *`(e: React.FormEvent<HTMLInputElement>) => void`* | undefined
+| value | Sets the value of the input field. | *`string`* | 
+| onChange | Sets the placeholder for insect component. | *`(e: React.FormEvent<HTMLInputElement>) => void`* | 
 
 <br />
 <br />
@@ -92,14 +92,14 @@ Insect can be either an input field, a single select field or a multi select fie
 
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
-| allowMultiple | Enables multi select by setting the number of selectable items | *`number`* | undefined
-| search | Toggles option search | *`boolean`* | undefined (false)
+| allowMultiple | Enables multi select by setting the number of selectable items | *`number`* | 
+| search | Toggles option search | *`boolean`* |  (false)
 | options | A list of options for the select field | *`{ title: string; value: string; }[]`* | [  ]
-| onSelect | Funtion to trigger when an item is selected. It returns the field name and then returns a single string for single select and an array of strings for multi select | *`(value: string \| string[] \| null, name: string) => void`* | undefined
-| dropdownIcon | Custom icon for dropdown caret | *`string \| React.ReactNode \| null`* | undefined
-| checkmarkIcon | Custom selected item indicator icon | *`string \| React.ReactNode \| null`* | undefined
-| dropdownClass | Custom classname for the dropdown container div. This div wraps the *ul* tag which in turn wraps the individual *li* tags | *`string`* | undefined 
-| checkerClass | Custom classname for the selected items indicator icon | *`string`* | undefined 
+| onSelect | Funtion to trigger when an item is selected. It returns the field name and then returns a single string for single select and an array of strings for multi select | *`(value: string \| string[] \| null, name: string) => void`* | 
+| dropdownIcon | Custom icon for dropdown caret | *`string \| React.ReactNode \| null`* | 
+| checkmarkIcon | Custom selected item indicator icon | *`string \| React.ReactNode \| null`* | 
+| dropdownClass | Custom classname for the dropdown container div. This div wraps the *ul* tag which in turn wraps the individual *li* tags | *`string`* |  
+| checkerClass | Custom classname for the selected items indicator icon | *`string`* |  
 | closeOnBlur | Determines if the dropdown should close when outside is clicked or not | *`boolean`* | true
 
 
