@@ -55,6 +55,9 @@ export const MyComponent = () => {
 
 Insect can be either an input field, a single select field or a multi select field. The props passed in determines what Insect is. Here's a table of all available props for input and for select.
 
+<br />
+<br />
+
 ### General props
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
@@ -72,12 +75,17 @@ Insect can be either an input field, a single select field or a multi select fie
 | onFocus | Function to trigger when input field is focused on. | *`(e: React.FocusEvent<HTMLInputElement>) => void`* | undefined
 | onBlur | Function to trigger when input field goes out of focus. | *`(e: React.FocusEvent<HTMLInputElement>) => void`* | undefined
 
+<br />
+<br />
 ### For Input field type
 
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
 | value | Sets the value of the input field. | *`string`* | undefined
 | onChange | Sets the placeholder for insect component. | *`(e: React.FormEvent<HTMLInputElement>) => void`* | undefined
+
+<br />
+<br />
 
 ### For Select field type
 
@@ -86,7 +94,7 @@ Insect can be either an input field, a single select field or a multi select fie
 | allowMultiple | Enables multi select by setting the number of selectable items | *`number`* | undefined
 | search | Toggles option search | *`boolean`* | undefined (false)
 | options | A list of options for the select field | *`{ title: string; value: string; }[]`* | []
-| onSelect | Funtion to trigger when an item is selected. It returns the field name and then returns a single string for single select and an array of strings for multi select | *`(value: string | string[] | null, name: string) => void`* | undefined
+| onSelect | Funtion to trigger when an item is selected. It returns the field name and then returns a single string for single select and an array of strings for multi select | *`(value: string \| string[] \| null, name: string) => void`* | undefined
 | dropdownIcon | Custom icon for dropdown caret | *`string \| React.ReactNode \| null`* | undefined
 | checkmarkIcon | Custom selected item indicator icon | *`string \| React.ReactNode \| null`* | undefined
 | dropdownClass | Custom classname for the dropdown container div. This div wraps the *ul* tag which in turn wraps the individual *li* tags | *`string`* | undefined 
