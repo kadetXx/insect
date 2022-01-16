@@ -30,7 +30,7 @@ $insect-rem-unit: 16;
 .insect {
   width: 100%;
   display: flex;
-  @include flex(flex-start, flex-start, column, 0, rem(0.8));
+  @include flex(flex-start, flex-start, column, 0, rem(0.5));
 }
 
 .insect_label {
