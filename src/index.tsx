@@ -29,7 +29,7 @@ export interface InsectProps {
   iconsClass?: string;
   checkerClass?: string;
   dropdownClass?: string;
-  type?: "text" | "number" | "password" | "select";
+  type?: "text" | "number" | "password" | "email" | "select";
   options?: InsectOption[];
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;

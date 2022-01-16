@@ -21,3 +21,25 @@
 - Supports custom rem unit.
 - Zero third party dependency (asides react's recommended prop-types).
 - Typescript ready
+- Multi select options
+- Options search
+- Custom icons support
+
+## 🔑 Installation
+
+```
+$ yarn add react-insect
+```
+
+## 📄 Usage
+
+Import Insect component
+
+```js
+import { Insect } from 'react-insect'
+```
+Now you can use it in your code like so
+
+```jsx
+<Insect placeholder="Input email address" name="email" />
+```
