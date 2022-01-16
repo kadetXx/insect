@@ -1,13 +1,16 @@
+// root properties
+:root {
+  --insect-rem: 10;
+  --insect-norm: 10/var(--insect-rem)
+}
+
 // variables
 $col-white: #ffffff;
 $col-black: #424242;
 
-$insect-rem-unit: 16;
-
 // functions
 @function rem($num) {
-  $normalised: calc(10 / $insect-rem-unit);
-  @return calc($num * $normalised) + rem;
+  @return calc(#{$num}rem * var(--insect-norm));
 }
 
 // mixins
@@ -34,9 +37,7 @@ $insect-rem-unit: 16;
 }
 
 .insect_label {
-  // font-size: 1.6rem;
   font-size: rem(1.6);
-  line-height: 152.2%;
   color: $col-black;
   font-weight: 400;
 }
