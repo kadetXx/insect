@@ -33,7 +33,7 @@ $col-black: #424242;
 .insect {
   width: 100%;
   display: flex;
-  @include flex(flex-start, flex-start, column, 0, rem(0.5));
+  @include flex(flex-start, flex-start, column, 0, rem(0.6));
 }
 
 .insect_label {
