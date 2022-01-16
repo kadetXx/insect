@@ -76,10 +76,11 @@ export const Insect = ({
   const [selectedsValue, setSelectedsValue] = useState<string[]>([]);
   const [filter, setFilter] = useState<string>("");
 
-  const searchCondiionOne = !allowMultiple && search && showDD
-  const searchConditionTwo = search && showDD && allowMultiple && selecteds.length < allowMultiple;
-  const showSearch = searchCondiionOne || searchConditionTwo
-    
+  const searchCondiionOne = !allowMultiple && search && showDD;
+  const searchConditionTwo =
+    search && showDD && allowMultiple && selecteds.length < allowMultiple;
+  const showSearch = searchCondiionOne || searchConditionTwo;
+
   const inputValue =
     type === "select" && allowMultiple
       ? selecteds?.filter((item) => item !== null).join(", ")
@@ -207,6 +208,25 @@ export const Insect = ({
 
     return () => window.removeEventListener("resize", setPosition);
   }, [showDD, filter]);
+
+  useLayoutEffect(() => {
+    // get computed style of body
+    const computedStyle: any = window.getComputedStyle(document.body);
+
+    // get font sizr of body from computed style
+    const propertyValue = computedStyle
+      ? computedStyle.getPropertyValue("font-size")
+      : 16;
+    
+    // extract just the number from font size
+    const unit = propertyValue.match(/\d+/)[0];
+
+    // ensure type is = number
+    const defaultUnit: any = Number(unit);
+
+    // set custom insect unit based on font size
+    document.documentElement.style.setProperty("--insect-rem", defaultUnit);
+  }, []);
 
   return (
     <div className={`insect test ${className}`}>
