@@ -94,7 +94,7 @@ Insect can be either an input field, a single select field or a multi select fie
 | --- | --- | --- | --- |
 | allowMultiple | Enables multi select by setting the number of selectable items | *`number`* | undefined
 | search | Toggles option search | *`boolean`* | undefined (false)
-| options | A list of options for the select field | *`{ title: string; value: string; }[]`* | []
+| options | A list of options for the select field | *`{ title: string; value: string; }[]`* | [  ]
 | onSelect | Funtion to trigger when an item is selected. It returns the field name and then returns a single string for single select and an array of strings for multi select | *`(value: string \| string[] \| null, name: string) => void`* | undefined
 | dropdownIcon | Custom icon for dropdown caret | *`string \| React.ReactNode \| null`* | undefined
 | checkmarkIcon | Custom selected item indicator icon | *`string \| React.ReactNode \| null`* | undefined
