@@ -1,6 +1,17 @@
+// root properties
+:root {
+  --insect-rem: 16;
+  --insect-norm: 10/var(--insect-rem)
+}
+
 // variables
 $col-white: #ffffff;
 $col-black: #424242;
+
+// functions
+@function rem($num) {
+  @return calc(#{$num}rem * var(--insect-norm));
+}
 
 // mixins
 @mixin flex(
@@ -22,12 +33,11 @@ $col-black: #424242;
 .insect {
   width: 100%;
   display: flex;
-  @include flex(flex-start, flex-start, column, 0, 0.8rem);
+  @include flex(flex-start, flex-start, column, 0, rem(0.6));
 }
 
 .insect_label {
-  font-size: 1.6rem;
-  line-height: 152.2%;
+  font-size: rem(1.6);
   color: $col-black;
   font-weight: 400;
 }
@@ -35,12 +45,12 @@ $col-black: #424242;
 .insect_wrapper {
   position: relative;
   width: 100%;
-  padding: 0 1.2rem;
+  padding: 0 rem(1.2);
   transition: all 0.1s ease-in;
   background-color: $col-white;
   border: 1px solid rgba($col-black, 0.2);
 
-  @include flex(flex-start, center, row, 1rem);
+  @include flex(flex-start, center, row, rem(1));
 
   &:focus-within {
     transition: all 0.2s linear;
@@ -61,8 +71,8 @@ $col-black: #424242;
 }
 
 .insect_icon {
-  width: 2rem;
-  height: 2rem;
+  width: rem(2);
+  height: rem(2);
   flex-shrink: 0;
   position: relative;
   pointer-events: none;
@@ -83,11 +93,11 @@ $col-black: #424242;
 .insect_input {
   all: unset;
   flex-grow: 1;
-  padding-right: 1.5rem;
+  padding-right: rem(1.5);
   height: 100%;
-  font-size: 1.6rem;
-  min-height: 1.5rem;
-  padding: 1.2rem 1.2rem 1.2rem 0;
+  font-size: rem(1.6);
+  min-height: rem(1.5);
+  padding: rem(1.2) rem(1.2) rem(1.2) 0;
   color: $col-black;
 
   &::placeholder {
@@ -98,16 +108,20 @@ $col-black: #424242;
     cursor: pointer;
     caret-color: transparent;
   }
+
+  &[data-search] {
+    cursor: text;
+  }
 }
 
 .insect_dd {
   position: absolute;
-  min-height: 5rem;
-  max-height: 25.6rem;
+  min-height: rem(5);
+  max-height: rem(25.6);
   overflow-y: auto;
   left: -1px;
   right: -1px;
-  padding: 1rem 0;
+  padding: rem(1) 0;
   border-radius: 4px;
   box-shadow: 0 4px 15px 0 rgba($col-black, 0.08);
   z-index: z("level-three");
@@ -118,8 +132,8 @@ $col-black: #424242;
 }
 
 .insect_dd-item {
-  padding: 1.5rem 2rem;
-  font-size: 1.6rem;
+  padding: rem(1.5) rem(2);
+  font-size: rem(1.6);
   width: 100%;
   transition: all 0.2s linear;
 
@@ -137,12 +151,12 @@ $col-black: #424242;
   }
 
   &[data-empty] {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    font-size: 1.3rem;
+    padding-top: rem(3);
+    padding-bottom: rem(3);
+    font-size: rem(1.3);
     color: rgba($col-black, 0.4);
 
-    @include flex(center, center, column, 0, 0.8rem);
+    @include flex(center, center, column, 0, rem(0.8));
 
     &:hover {
       background-color: inherit;
@@ -151,8 +165,8 @@ $col-black: #424242;
 }
 
 .insect_dd-item_icon {
-  width: 1.8rem;
-  height: 1.7rem;
+  width: rem(1.8);
+  height: rem(1.7);
   position: relative;
 }
 

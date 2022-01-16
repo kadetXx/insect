@@ -8,8 +8,6 @@ import {
   useRef,
 } from "react";
 
-import { flattenObj } from "@/utils";
-
 export interface InsectOption {
   title: string;
   value: string;
@@ -74,15 +72,18 @@ export const Insect = ({
   const ddRef = useRef<HTMLDivElement>(null);
   const [showDD, setShowDD] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>("");
-  const [selecteds, setSelecteds] = useState<any>({});
-  const [selectedsValue, setSelectedsValue] = useState<any>({});
+  const [selecteds, setSelecteds] = useState<string[]>([]);
+  const [selectedsValue, setSelectedsValue] = useState<string[]>([]);
   const [filter, setFilter] = useState<string>("");
+
+  const searchCondiionOne = !allowMultiple && search && showDD;
+  const searchConditionTwo =
+    search && showDD && allowMultiple && selecteds.length < allowMultiple;
+  const showSearch = searchCondiionOne || searchConditionTwo;
 
   const inputValue =
     type === "select" && allowMultiple
-      ? Object.values(selecteds)
-          .filter((item) => item !== null)
-          .join(", ")
+      ? selecteds?.filter((item) => item !== null).join(", ")
       : type === "select"
       ? selected
       : value
@@ -110,38 +111,26 @@ export const Insect = ({
     }
 
     if (!!allowMultiple) {
-      let breakLoop = false;
+      // check if selected item is already present
+      const isPresent = selecteds?.find((item) => item === title);
+      const spaceAvailable = selecteds?.length < allowMultiple;
 
-      // map through object, check for the one with empty
-      Object.keys(selecteds).forEach((key) => {
-        // append titles & values if there is an empty space
-        if (selecteds[key] === title) {
-          // remove titles & values if the option is already present
-          setSelecteds({
-            ...selecteds,
-            [key]: null,
-          });
+      if (isPresent) {
+        const newOptions = selecteds.filter((option) => option !== title);
+        const newValues = selectedsValue.filter((option) => option !== value);
 
-          setSelectedsValue({
-            ...selectedsValue,
-            [key]: null,
-          });
+        setSelecteds(newOptions);
+        setSelectedsValue(newValues);
+      } else if (spaceAvailable) {
+        const previousOptions = [...selecteds];
+        const previousValues = [...selectedsValue];
 
-          breakLoop = true;
-        } else if (selecteds[key] === null && !breakLoop) {
-          setSelecteds({
-            ...selecteds,
-            [key]: title,
-          });
+        previousOptions.push(title);
+        previousValues.push(value);
 
-          setSelectedsValue({
-            ...selectedsValue,
-            [key]: value,
-          });
-
-          breakLoop = true;
-        }
-      });
+        setSelecteds(previousOptions);
+        setSelectedsValue(previousValues);
+      }
     }
   };
 
@@ -152,12 +141,9 @@ export const Insect = ({
   };
 
   const formatFilterText = () => {
-    const allSelectedValues = flattenObj(selectedsValue);
-    const selectedItemAbsent =
-      allSelectedValues.filter((item) => item === null).length ===
-      allowMultiple;
-
-    const previousItemsPresent = !!selected || !selectedItemAbsent;
+    // const allSelectedValues = flattenObj(selectedsValue);
+    const selectedItemsPresent = selecteds?.length > 0;
+    const previousItemsPresent = !!selected || selectedItemsPresent;
 
     if (previousItemsPresent && allowMultiple) {
       return `${inputValue}, ${filter}`;
@@ -167,38 +153,16 @@ export const Insect = ({
   };
 
   const isSelected = (title: string) => {
-    return Object.values(selecteds).includes(title);
+    return selecteds.includes(title);
   };
 
   const totalSelected = useCallback(() => {
-    return Object.values(selecteds).filter((item) => item !== null).length;
+    return selecteds.length;
   }, [selectedsValue]);
-
-  // initialize multiple options
-  useEffect(() => {
-    if (allowMultiple) {
-      // fill the selecteds with the number of multiple options
-      const array: any[] = Array.from(Array(allowMultiple).keys());
-
-      const emptyState: any = array.reduce((obj, current) => {
-        obj = {
-          ...obj,
-          [current]: null,
-        };
-
-        return obj;
-      }, {});
-
-      setSelecteds(emptyState);
-      setSelectedsValue(emptyState);
-    }
-  }, [allowMultiple]);
 
   useEffect(() => {
     if (onSelect && allowMultiple) {
-      const allValues = flattenObj(selectedsValue);
-      const filteredValues = allValues.filter((item) => item !== null);
-      onSelect(filteredValues, name);
+      onSelect(selectedsValue, name);
     }
   }, [selectedsValue]);
 
@@ -209,7 +173,11 @@ export const Insect = ({
       } else if (showDD && !!closeOnBlur) {
         let shouldClose = true;
         const target = e.target;
-        const componentList = [containerRef.current, inputRef.current];
+        const componentList = [
+          containerRef.current,
+          inputRef.current,
+          searchRef.current,
+        ];
 
         componentList.forEach((item) => {
           target === item ? (shouldClose = false) : null;
@@ -242,7 +210,7 @@ export const Insect = ({
   }, [showDD, filter]);
 
   return (
-    <div className={`insect ${className}`}>
+    <div className={`insect test ${className}`}>
       {!!label && (
         <label className={`insect_label ${labelClass}`} htmlFor={name}>
           {label}
@@ -255,7 +223,9 @@ export const Insect = ({
         data-type={type}
         data-icon={prefixIcon ? "prefix" : "suffix"}
         data-focused={type === "select" ? showDD : null}
-        onClick={() => type === "select" && setShowDD(!showDD)}
+        onClick={() => {
+          type === "select" && !showSearch && setShowDD(!showDD);
+        }}
       >
         {!!prefixIcon && (
           <figure className={`insect_icon ${iconsClass}`}>
@@ -267,12 +237,13 @@ export const Insect = ({
           </figure>
         )}
 
-        {search && showDD ? (
+        {showSearch ? (
           <input
             className={`insect_input ${inputClass}`}
             value={formatFilterText()}
             onChange={handleSearch}
             ref={searchRef}
+            data-search
           />
         ) : (
           <input
@@ -382,7 +353,7 @@ export const Insect = ({
                           <path
                             d="M9.80469 16.5002L14.4714 21.1669L24.4714 11.1669"
                             stroke="#4CAF50"
-                            stroke-width="1.95162"
+                            strokeWidth="1.95162"
                           />
                         </svg>
                       ) : checkmarkIcon && typeof checkmarkIcon === "string" ? (
@@ -411,7 +382,7 @@ export const Insect = ({
                           <path
                             d="M9.80469 16.5002L14.4714 21.1669L24.4714 11.1669"
                             stroke="#4CAF50"
-                            stroke-width="1.95162"
+                            strokeWidth="1.95162"
                           />
                         </svg>
                       ) : checkmarkIcon && typeof checkmarkIcon === "string" ? (
