@@ -209,7 +209,7 @@ export const Insect = ({
   }, [showDD, filter]);
 
   return (
-    <div className={`insect ${className}`}>
+    <div className={`insect test ${className}`}>
       {!!label && (
         <label className={`insect_label ${labelClass}`} htmlFor={name}>
           {label}

@@ -2,13 +2,12 @@
 $col-white: #ffffff;
 $col-black: #424242;
 
-$default-unit: 16;
+$insect-rem-unit: 16 !global;
 
 // functions
 @function rem($num) {
-  $normalised: calc(10/$default-unit);
-
-  @return calc($num * $normalised) + rem
+  $normalised: calc(10 / $insect-rem-unit);
+  @return calc($num * $normalised) + rem;
 }
 
 // mixins
