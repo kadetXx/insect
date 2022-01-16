@@ -58,5 +58,7 @@ Insect can be either an input field, a single select field or a multi select fie
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
 | name | Sets the name of the input field. | *`string`* | undefined
-| type | Sets type of input field | *`"text" \| "number" \| "password" \| "email" \| "select"`* | text
+| type | Sets type of input field | *`text \| number \| password \| email \| select`* | text
 | value | Sets the value of the input field. NB: doesn't work for type - *select* | *`string`* | undefined
+| label | Adds a label to the top of insect component. | *`string`* | undefined
+| placeholder | Sets the placeholder for insect component. | *`string`* | Input or select an option
