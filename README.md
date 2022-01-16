@@ -3,7 +3,7 @@
 <div align="center">
   <br />
   <br />
-  <img src="https://res.cloudinary.com/kadet/image/upload/v1642357838/insect/logo_noag4t.svg" width="250" height="auto" alt="dropd logo" align="center" />
+  <img src="https://res.cloudinary.com/kadet/image/upload/v1642358094/insect/logo_dbzodw.svg" width="250" height="auto" alt="dropd logo" align="center" />
   <br />
   <br />
   <h3 align="center">🛠 Highly customisable, minimalistic input x select field for React.</h3>
