@@ -1,15 +1,29 @@
 {
-  "name": "insect",
+  "name": "react-insect",
   "version": "1.0.0",
-  "description": "",
   "main": "dist/index.js",
+  "license": "MIT",
+  "repository": "https://github.com/kadetXx/insect",
+  "description": "Highly customisable, minimalistic input x select field for React.",
+  "keywords": [
+    "select",
+    "input",
+    "forms",
+    "react-component",
+    "dropdown",
+    "react-select",
+    "react-select-multi",
+    "react-select-search"
+  ],
+  "author": {
+    "name": "Kadet",
+    "email": "hello@kadet.dev",
+    "url": "https://kadet.dev"
+  },
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "peerDependencies": {
     "react": "^16.8.0"
   },
