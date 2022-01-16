@@ -297,9 +297,10 @@ export const Insect = ({
           </figure>
         )}
 
-        {type === "select" && showDD && (
+        {type === "select" && (
           <div
             ref={ddRef}
+            data-open={showDD}
             className={`insect_dd ${dropdownClass}`}
             onClick={(e) => !!allowMultiple && e.stopPropagation()}
           >
