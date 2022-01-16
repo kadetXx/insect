@@ -209,25 +209,6 @@ export const Insect = ({
     return () => window.removeEventListener("resize", setPosition);
   }, [showDD, filter]);
 
-  useLayoutEffect(() => {
-    // get computed style of body
-    const computedStyle: any = window.getComputedStyle(document.body);
-
-    // get font sizr of body from computed style
-    const propertyValue = computedStyle
-      ? computedStyle.getPropertyValue("font-size")
-      : 16;
-    
-    // extract just the number from font size
-    const unit = propertyValue.match(/\d+/)[0];
-
-    // ensure type is = number
-    const defaultUnit: any = Number(unit);
-
-    // set custom insect unit based on font size
-    document.documentElement.style.setProperty("--insect-rem", defaultUnit);
-  }, []);
-
   return (
     <div className={`insect test ${className}`}>
       {!!label && (
