@@ -58,7 +58,7 @@ Insect can be either an input field, a single select field or a multi select fie
 <br />
 <br />
 
-### General props
+### 🧩 General props
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
 | name | Sets the name of the input field. | *`string`* | undefined
@@ -77,7 +77,8 @@ Insect can be either an input field, a single select field or a multi select fie
 
 <br />
 <br />
-### For Input field type
+
+### ⌨️ For Input field type
 
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
@@ -87,7 +88,7 @@ Insect can be either an input field, a single select field or a multi select fie
 <br />
 <br />
 
-### For Select field type
+### 🔮 For Select field type
 
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
@@ -99,6 +100,8 @@ Insect can be either an input field, a single select field or a multi select fie
 | checkmarkIcon | Custom selected item indicator icon | *`string \| React.ReactNode \| null`* | undefined
 | dropdownClass | Custom classname for the dropdown container div. This div wraps the *ul* tag which in turn wraps the individual *li* tags | *`string`* | undefined 
 | checkerClass | Custom classname for the selected items indicator icon | *`string`* | undefined 
+| closeOnBlur | Determines if the dropdown should close when outside is clicked or not | *`boolean`* | true
+
 
   
   
