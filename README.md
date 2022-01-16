@@ -78,7 +78,7 @@ Insect can be either an input field, a single select field or a multi select fie
 <br />
 <br />
 
-### ✏️ For Input field type
+### 🏁 For Input field type
 
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
