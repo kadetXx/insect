@@ -9,8 +9,8 @@
   <h3 align="center">🛠 Highly customisable, minimalistic input x select field for React.</h3>
 
   <p align="center">
-  <a href="https://npm.im/react-insect"><img src="https://img.shields.io/npm/v/react-insect.svg?color=green&style=flat-square" alt="Package version."></a>
-  <a href="http://makeapullrequest.com"><img src="https://img.shields.io/badge/PR(s)-welcome-green.svg?style=flat-square" alt="Make a pull request."></a>
+  <a href="https://npm.im/react-insect"><img src="https://img.shields.io/npm/v/react-insect.svg?color=brightgreen&style=flat-square" alt="Package version."></a>
+  <a href="http://makeapullrequest.com"><img src="https://img.shields.io/badge/PR(s)-welcome-brightgreen.svg?style=flat-square" alt="Make a pull request."></a>
   </p>
 </div>
 
