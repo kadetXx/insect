@@ -56,7 +56,7 @@ export const MyComponent = () => {
 Insect can be either an input field, a single select field or a multi select field. The props passed in determines what Insect is. Here's a table of all available props.
 
 | Prop | Description | Type | default
-| --- | ----------- |
-| name | This sets the name of the input field. | <span style="color:#029288">string</span> | undefined
+| --- | --- | --- | --- |
+| name | This sets the name of the input field. | string | undefined
 <!-- | type | Sets type of input field | <span style="color:#029288">"text" | "number" | "password" | "email" | "select"</span> | text -->
 
