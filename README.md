@@ -37,7 +37,7 @@ $ yarn add react-insect
 // Import Insect component
 import { Insect } from 'react-insect';
 
-// use it in react like so
+// Use it in your code like so
 export const MyComponent = () => {
   return (
     <>
@@ -50,3 +50,16 @@ export const MyComponent = () => {
   );
 };
 ```
+
+## 🪄 Props
+
+Insect can be either an input field, a single select field or a multi select field. The props passed in determines what Insect is. Here's a list of all available props.
+
+### name: string
+
+This sets the name of the input field.
+
+### type : string
+
+Sets type of input field. Available options are `"text" | "number" | "password" | "email" | "select"`
+
