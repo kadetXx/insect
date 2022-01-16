@@ -31,15 +31,22 @@
 $ yarn add react-insect
 ```
 
-## 📄 Usage
-
-Import Insect component
-
-```js
-import { Insect } from 'react-insect'
-```
-Now you can use it in your code like so
+## 📄 Basic Usage
 
 ```jsx
-<Insect placeholder="Input email address" name="email" />
+// Import Insect component
+import { Insect } from 'react-insect';
+
+// use it in react like so
+export const MyComponent = () => {
+  return (
+    <>
+      <Insect
+        name="username"
+        type="text"
+        placeholder="Choose a username"
+      />
+    </>
+  );
+};
 ```
