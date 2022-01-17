@@ -102,7 +102,25 @@ Insect can be either an input field, a single select field or a multi select fie
 | checkerClass | Custom classname for the selected items indicator icon | *`string`* |  
 | closeOnBlur | Determines if the dropdown should close when outside is clicked or not | *`boolean`* | true
 
+## 👷🏽 Contribution Guide
 
+Insect is an opensource project and public contribution is very welcome. You can check [Issues](https://github.com/kadetXx/insect/issues) for bugs to fix or features to add.
+
+1. Fork this repository.
+2. Clone the forked repository to your local machine.
+3. Create a new branch with a name like this - feature/name-of-feature.
+4. Run `yarn` to install dependencies.
+5. Write code and then commit changes.
+6. Run `yarn build` to compile a build into the dist folder.
+7. Now You can decide to manually copy the inex.tsx and index.scss file from here into a local project in order to test the feature/bug you have fixed.
+8. Alternatively, run `yarn link` in your local insect root folder.
+9. On the local project you want to test the features on, run `yarn link 'insect'`.
+10. Now navigate back to the terminal on your local insect folder and then run `npm link ../path-to-test-project/node_modules/react`. This will make insect use the copy of react from your local test project. Now you can test your changes.
+11. After all is done, push to your forked repository and then send a pull request.
+
+## ⚖️ Licence
+
+MIT (c) [Collins Enebeli](https://kadet.dev).
   
   
   
