@@ -96,11 +96,16 @@ $col-black: #424242;
   flex-grow: 1;
   padding-right: rem(1.5);
   height: 100%;
-  font-size: 16px;
+  font-size: rem(1.6);
   min-height: rem(1.5);
   padding: rem(1.2) rem(1.2) rem(1.2) 0;
   color: $col-black;
 
+  @supports (-webkit-touch-callout: none) {
+    /* prevent zoom on ios */ 
+    font-size: 16px;
+  }
+ 
   /* Chrome, Safari, Edge, Opera */
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
