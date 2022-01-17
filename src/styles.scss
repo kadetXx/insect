@@ -160,7 +160,8 @@ $col-black: #424242;
   font-size: 100%;
   font-family: inherit;
   vertical-align: baseline;
-  @include flex(flex-start, flex-start, column);
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .insect_dd-item {
