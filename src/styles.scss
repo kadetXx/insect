@@ -1,7 +1,7 @@
 // root properties
 :root {
   --insect-rem: 16;
-  --insect-norm: 10/var(--insect-rem)
+  --insect-norm: 10 / var(--insect-rem);
 }
 
 // variables
@@ -101,6 +101,18 @@ $col-black: #424242;
   padding: rem(1.2) rem(1.2) rem(1.2) 0;
   color: $col-black;
 
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+
   &::placeholder {
     color: rgba($col-black, 0.4);
   }
@@ -143,6 +155,7 @@ $col-black: #424242;
 }
 
 .insect_dd-menu {
+  padding: 0;
   @include flex(flex-start, flex-start, column);
 }
 
