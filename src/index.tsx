@@ -70,6 +70,7 @@ export const Insect = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const ddRef = useRef<HTMLDivElement>(null);
+  const [iosDevice, setIosDevice] = useState<boolean>(false);
   const [showDD, setShowDD] = useState<boolean>(false);
   const [selected, setSelected] = useState<string>("");
   const [selecteds, setSelecteds] = useState<string[]>([]);
@@ -209,6 +210,25 @@ export const Insect = ({
     return () => window.removeEventListener("resize", setPosition);
   }, [showDD, filter]);
 
+  useEffect(() => {
+    // get device type in order to set input field size
+    const isIOS: boolean = [
+      "iPad Simulator",
+      "iPhone Simulator",
+      "iPod Simulator",
+      "iPad",
+      "iPhone",
+      "iPod",
+    ].includes(navigator.platform);
+
+    const isIPAD =
+      navigator.userAgent.includes("Mac") && "ontouchend" in document;
+    
+    if (isIOS || isIPAD) {
+      setIosDevice(true);
+    }
+  }, []);
+
   return (
     <div className={`insect test ${className}`}>
       {!!label && (
@@ -244,6 +264,7 @@ export const Insect = ({
             onChange={handleSearch}
             ref={searchRef}
             data-search
+            data-ios={iosDevice}
           />
         ) : (
           <input
@@ -257,6 +278,7 @@ export const Insect = ({
             value={inputValue}
             ref={inputRef}
             autoComplete={type === "select" ? "off" : "true"}
+            data-ios={iosDevice}
           />
         )}
 

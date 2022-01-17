@@ -101,11 +101,6 @@ $col-black: #424242;
   padding: rem(1.2) rem(1.2) rem(1.2) 0;
   color: $col-black;
 
-  @supports (-webkit-touch-callout: none) {
-    /* prevent zoom on ios */ 
-    font-size: 16px;
-  }
- 
   /* Chrome, Safari, Edge, Opera */
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -129,6 +124,11 @@ $col-black: #424242;
 
   &[data-search] {
     cursor: text;
+  }
+
+  &[data-ios="true"] {
+    /* prevent zoom on ios */
+    font-size: 16px;
   }
 }
 
@@ -178,7 +178,6 @@ $col-black: #424242;
   border: 0;
   vertical-align: baseline;
   transition: all 0.2s linear;
-  
 
   @include flex(space-between, center);
 
