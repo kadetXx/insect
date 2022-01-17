@@ -126,7 +126,7 @@ $col-black: #424242;
     cursor: text;
   }
 
-  &[data-ios="true"] {
+  &[data-iosdevice="true"] {
     /* prevent zoom on ios */
     font-size: 16px;
   }
