@@ -156,14 +156,25 @@ $col-black: #424242;
 
 .insect_dd-menu {
   padding: 0;
+  margin: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
   @include flex(flex-start, flex-start, column);
 }
 
 .insect_dd-item {
   padding: rem(1.5) rem(2);
   font-size: rem(1.6);
+  font-family: inherit;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
   transition: all 0.2s linear;
+  
 
   @include flex(space-between, center);
 
