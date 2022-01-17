@@ -50,6 +50,7 @@ $col-black: #424242;
 .insect_wrapper {
   position: relative;
   padding: 0 rem(1.2);
+  height: fit-content;
   transition: all 0.1s ease-in;
   background-color: $col-white;
   border: 1px solid rgba($col-black, 0.2);
