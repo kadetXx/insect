@@ -142,7 +142,7 @@ $col-black: #424242;
   opacity: 0;
   background-color: $col-white;
   transform: translateY(-1.5rem);
-  transition: 0.25s 0.1s, box-shadow 0.2ms 0.1ms;
+  transition: opacity 0.25s 0.1s, transform 0.25s 0.1s, box-shadow 0.2ms 0.1ms;
 
   &[data-open="true"] {
     opacity: 1;
