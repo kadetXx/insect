@@ -71,6 +71,7 @@ $col-black: #424242;
 }
 
 .insect_icon {
+  margin: 0;
   width: rem(2);
   height: rem(2);
   flex-shrink: 0;
@@ -181,6 +182,7 @@ $col-black: #424242;
 .insect_dd-item_icon {
   width: rem(1.8);
   height: rem(1.7);
+  margin: 0;
   position: relative;
 }
 
