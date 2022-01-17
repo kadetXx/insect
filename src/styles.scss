@@ -34,6 +34,7 @@ $col-black: #424242;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
+  gap: rem(0.6);
 }
 
 .insect_label {
