@@ -1,0 +1,5 @@
+.vscode
+.gitignore
+src
+logo.svg
+__tests__
