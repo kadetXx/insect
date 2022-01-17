@@ -32,8 +32,8 @@ $col-black: #424242;
 // main styles
 .insect {
   width: 100%;
-  display: flex;
-  @include flex(flex-start, flex-start, column, 0, rem(0.6));
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .insect_label {
@@ -44,7 +44,6 @@ $col-black: #424242;
 
 .insect_wrapper {
   position: relative;
-  width: 100%;
   padding: 0 rem(1.2);
   transition: all 0.1s ease-in;
   background-color: $col-white;
