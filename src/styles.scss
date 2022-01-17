@@ -138,14 +138,14 @@ $col-black: #424242;
   overflow-y: hidden;
   overflow-x: hidden;
   pointer-events: none;
-
+  z-index: 10;
   opacity: 0;
+  background-color: $col-white;
   transform: translateY(-1.5rem);
   transition: 0.25s 0.1s, box-shadow 0.2ms 0.1ms;
 
   &[data-open="true"] {
     opacity: 1;
-    z-index: 10;
     pointer-events: auto;
     overflow-y: auto;
     transform: translateY(0);
