@@ -264,7 +264,7 @@ export const Insect = ({
             onChange={handleSearch}
             ref={searchRef}
             data-search
-            data-ios={iosDevice}
+            data-iosdevice={iosDevice}
           />
         ) : (
           <input
@@ -278,7 +278,7 @@ export const Insect = ({
             value={inputValue}
             ref={inputRef}
             autoComplete={type === "select" ? "off" : "true"}
-            data-ios={iosDevice}
+            data-iosdevice={iosDevice}
           />
         )}
 
