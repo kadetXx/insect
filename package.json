@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "repository": "https://github.com/kadetXx/insect",
-  "homepage": "https://insect.vercel.app/",
+  "homepage": "https://insect.vercel.app",
   "description": "Highly customisable, minimalistic input x select field for React.",
   "keywords": [
     "select",
