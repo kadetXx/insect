@@ -124,10 +124,12 @@ $col-black: #424242;
   &[type="select"] {
     cursor: pointer;
     caret-color: transparent;
+    pointer-events: none;
   }
 
   &[data-search] {
     cursor: text;
+    pointer-events: auto;
   }
 
   &[data-iosdevice="true"] {
