@@ -223,7 +223,7 @@ export const Insect = ({
 
     const isIPAD =
       navigator.userAgent.includes("Mac") && "ontouchend" in document;
-    
+
     if (isIOS || isIPAD) {
       setIosDevice(true);
     }
@@ -232,7 +232,11 @@ export const Insect = ({
   return (
     <div className={`insect test ${className}`}>
       {!!label && (
-        <label className={`insect_label ${labelClass}`} htmlFor={name}>
+        <label
+          data-iosdevice={iosDevice}
+          className={`insect_label ${labelClass}`}
+          htmlFor={name}
+        >
           {label}
         </label>
       )}
