@@ -1,5 +1,7 @@
-.vscode
-.gitignore
-src
+# dev files/folders
+
 logo.svg
 __tests__
+
+# dot files
+.gitignore
