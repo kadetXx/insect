@@ -117,9 +117,9 @@ Insect can be either an input field, a single select field or a multi select fie
 <br />
 <br />
 
-## 🦄 Usage with custom root rem unit
+## 🦄 Usage with custom PX - REM unit
 
-Sometimes, you may want to set the default rem unit to 10 (or any number at all) by adding `font-size: 10` to the html tag in order to simplify rem unit conversion. This will cause a lot of problems with third party components but don't worry, insect got you!
+Sometimes, you may want to set the default rem unit to 10rem/1px (or any value at all) by adding `font-size: 10px` (or some kind of viewport based value) to the html tag in order to simplify rem/px unit conversion. This will cause a lot of problems with third party components but don't worry, insect got you!
 
 Just add the following variable to your main style file and insect will adapt to your new unit.
 
@@ -129,6 +129,8 @@ Just add the following variable to your main style file and insect will adapt to
 }
 ```
 
+<br />
+<br />
 
 ## 👷🏽 Contribution Guide
 
