@@ -14,8 +14,11 @@
   </p>
 </div>
 
+<br />
+
 ## ⚡️ Features
 
+- Tiny size (~4kb Gzip)
 - 100% responsive.
 - Highly customisable.
 - Supports custom rem unit.
@@ -25,11 +28,17 @@
 - Options search
 - Custom icons support
 
+<br />
+<br />
+
 ## 💾 Installation
 
 ```
 $ yarn add react-insect
 ```
+
+<br />
+<br />
 
 ## 📄 Basic Usage
 
@@ -50,6 +59,9 @@ export const MyComponent = () => {
   );
 };
 ```
+
+<br />
+<br />
 
 ## 🪄 Props
 
@@ -104,6 +116,19 @@ Insect can be either an input field, a single select field or a multi select fie
 
 <br />
 <br />
+
+## 🦄 Usage with custom root rem unit
+
+Sometimes, you may want to set the default rem unit to 10 (or any number at all) by adding `font-size: 10` to the html tag in order to simplify rem unit conversion. This will cause a lot of problems with third party components but don't worry, insect got you!
+
+Just add the following variable to your main style file and insect will adapt to your new unit.
+
+```css
+:root {
+  --insect-rem: 10 !important;
+}
+```
+
 
 ## 👷🏽 Contribution Guide
 
