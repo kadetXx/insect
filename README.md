@@ -142,7 +142,7 @@ Insect is an opensource project and public contribution is very welcome. You can
 4. Run `yarn` to install dependencies.
 5. Write code and then commit changes.
 6. Run `yarn build` to compile a build into the dist folder.
-7. Now You can decide to manually copy the inex.tsx and index.scss file from here into a local project in order to test the feature/bug you have fixed.
+7. Now You can decide to manually copy the index.tsx and index.scss file from here into a local project in order to test the feature/bug you have fixed.
 8. Alternatively, run `yarn link` in your local insect root folder.
 9. On the local project you want to test the features on, run `yarn link 'insect'`.
 10. Now navigate back to the terminal on your local insect folder and then run `npm link ../path-to-test-project/node_modules/react`. This will make insect use the copy of react from your local test project. Now you can test your changes.
