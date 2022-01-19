@@ -154,6 +154,7 @@ Insect is an opensource project and public contribution is very welcome. You can
 ## ⚖️ Licence
 
 MIT (c) [Collins Enebeli](https://kadet.dev).
+
   
   
   
