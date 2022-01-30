@@ -417,7 +417,7 @@ export const Insect = ({
 
                   {isSelected(title) && (
                     <figure className={`insect_dd-item_icon ${checkerClass}`}>
-                      {!checkmarkIcon ? (
+                      {checkmarkIcon === undefined ? (
                         <svg
                           width="33"
                           height="33"
