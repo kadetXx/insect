@@ -74,7 +74,7 @@ Insect can be either an input field, a single select field or a multi select fie
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
 | name | Sets the name of the input field. | *`string`* | 
-| type | Sets type of input field | *`text \| number \| password \| email \| select`* | text
+| type | Sets type of input field | *`text \| textarea \| number \| password \| email \| select`* | text
 | label | Adds a label to the top of insect component. | *`string`* | 
 | placeholder | Sets the placeholder for insect component. | *`string`* | Input or select an option
 | prefixIcon | Adds an icon at the left of insect field | *`string \| React.ReactNode \| null`* | 
@@ -95,6 +95,7 @@ Insect can be either an input field, a single select field or a multi select fie
 | Prop | Description | Type | default
 | --- | --- | --- | --- |
 | value | Sets the value of the input field. | *`string`* | 
+| rows | Sets the number of rows for textarea | *`number`* | 
 | onChange | Sets the placeholder for insect component. | *`(e: React.FormEvent<HTMLInputElement>) => void`* | 
 
 <br />
