@@ -29,15 +29,22 @@ export interface InsectProps {
   iconsClass?: string;
   checkerClass?: string;
   dropdownClass?: string;
-  type?: "text" | "number" | "password" | "email" | "select";
+  type?: "text" | "number" | "password" | "email" | "select" | "textarea";
   options?: InsectOption[];
-  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (
+    e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  onBlur?: (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  onFocus?: (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   onSelect?: (value: string | string[] | null, name: string) => void;
   closeOnBlur?: boolean;
   allowMultiple?: number;
   search?: boolean;
+  rows?: number;
 }
 
 export const Insect = ({
@@ -65,9 +72,11 @@ export const Insect = ({
   dropdownClass,
   checkerClass,
   search,
+  rows,
 }: InsectProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const ddRef = useRef<HTMLDivElement>(null);
   const [iosDevice, setIosDevice] = useState<boolean>(false);
@@ -177,6 +186,7 @@ export const Insect = ({
         const componentList = [
           containerRef.current,
           inputRef.current,
+          textareaRef.current,
           searchRef.current,
         ];
 
@@ -261,7 +271,21 @@ export const Insect = ({
           </figure>
         )}
 
-        {showSearch ? (
+        {type === "textarea" ? (
+          <textarea
+            name={name}
+            rows={rows}
+            placeholder={placeholder}
+            className={`insect_input ${inputClass}`}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            value={inputValue}
+            onChange={onChange || (() => null)}
+            ref={textareaRef}
+            autoComplete={"true"}
+            data-iosdevice={iosDevice}
+          ></textarea>
+        ) : showSearch ? (
           <input
             className={`insect_input ${inputClass}`}
             value={formatFilterText()}
