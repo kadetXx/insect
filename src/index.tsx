@@ -30,7 +30,7 @@ export interface InsectProps {
   checkerClass?: string;
   dropdownClass?: string;
   type?: "text" | "number" | "password" | "email" | "select" | "textarea";
-  defaultOption: InsectOption;
+  defaultOption?: InsectOption;
   options?: InsectOption[];
   onChange?: (
     e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
