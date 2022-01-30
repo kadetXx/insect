@@ -30,6 +30,7 @@ export interface InsectProps {
   checkerClass?: string;
   dropdownClass?: string;
   type?: "text" | "number" | "password" | "email" | "select" | "textarea";
+  defaultOption: InsectOption;
   options?: InsectOption[];
   onChange?: (
     e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -52,6 +53,7 @@ export const Insect = ({
   type = "text",
   value,
   options,
+  defaultOption,
   prefixIcon,
   suffixIcon,
   dropdownIcon,
@@ -238,6 +240,12 @@ export const Insect = ({
       setIosDevice(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (defaultOption) {
+      handleSelect(defaultOption.title, defaultOption.value);
+    }
+  }, [defaultOption]);
 
   return (
     <div className={`insect test ${className}`}>
