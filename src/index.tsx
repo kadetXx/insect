@@ -173,7 +173,7 @@ export const Insect = ({
   }, [selectedsValue]);
 
   useEffect(() => {
-    if (onSelect && allowMultiple) {
+    if (onSelect && allowMultiple && selectedsValue.length !== 0) {
       onSelect(selectedsValue, name);
     }
   }, [selectedsValue]);
@@ -242,7 +242,10 @@ export const Insect = ({
   }, []);
 
   useEffect(() => {
-    if (defaultOption) {
+    const shouldUpdate =
+      defaultOption && selected === "" && selecteds.length === 0;
+
+    if (shouldUpdate) {
       handleSelect(defaultOption.title, defaultOption.value);
     }
   }, [defaultOption]);
