@@ -75,6 +75,7 @@ export const Insect = ({
   checkerClass,
   search,
   rows,
+  ...props,
 }: InsectProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -88,19 +89,19 @@ export const Insect = ({
   const [selectedsValue, setSelectedsValue] = useState<string[]>([]);
   const [filter, setFilter] = useState<string>("");
 
-  const searchCondiionOne = !allowMultiple && search && showDD;
+  const searchConditionOne = !allowMultiple && search && showDD;
   const searchConditionTwo =
     search && showDD && allowMultiple && selecteds.length < allowMultiple;
-  const showSearch = searchCondiionOne || searchConditionTwo;
+  const showSearch = searchConditionOne || searchConditionTwo;
 
   const inputValue =
     type === "select" && allowMultiple
       ? selecteds?.filter((item) => item !== null).join(", ")
       : type === "select"
-      ? selected
-      : value
-      ? value
-      : "";
+        ? selected
+        : value
+          ? value
+          : "";
 
   const filteredDropdown = options?.filter((option) =>
     option.title.toLowerCase().includes(filter.toLowerCase())
@@ -298,6 +299,7 @@ export const Insect = ({
           ></textarea>
         ) : showSearch ? (
           <input
+            {...props}
             className={`insect_input ${inputClass}`}
             value={formatFilterText()}
             onChange={handleSearch}
@@ -307,6 +309,7 @@ export const Insect = ({
           />
         ) : (
           <input
+            {...props}
             name={name}
             className={`insect_input ${inputClass}`}
             type={type}
@@ -369,22 +372,22 @@ export const Insect = ({
               {(!options ||
                 options.length === 0 ||
                 filteredDropdown?.length === 0) && (
-                <li className="insect_dd-item" data-empty>
-                  <svg
-                    width="35px"
-                    height="35px"
-                    viewBox="0 0 256 256"
-                    id="Flat"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill="#e0e0e0"
-                      d="M108,116a8,8,0,1,1-8-8A7.99993,7.99993,0,0,1,108,116Zm48-8a8,8,0,1,0,8,8A7.99993,7.99993,0,0,0,156,108Zm64,12v96a4.00007,4.00007,0,0,1-6.5332,3.0957L186.667,197.168,159.86621,219.0957a4.00069,4.00069,0,0,1-5.06641,0L128,197.168,101.2002,219.0957a4.00069,4.00069,0,0,1-5.06641,0L69.333,197.168,42.5332,219.0957A4,4,0,0,1,36,216V120a92,92,0,0,1,184,0Zm-8,0a84,84,0,0,0-168,0v87.55908L66.7998,188.9043a4.00069,4.00069,0,0,1,5.06641,0L98.667,210.832,125.4668,188.9043a4.00025,4.00025,0,0,1,5.0664,0L157.333,210.832l26.80078-21.92773a4.00069,4.00069,0,0,1,5.06641,0L212,207.55908Z"
-                    />
-                  </svg>
-                  No Items
-                </li>
-              )}
+                  <li className="insect_dd-item" data-empty>
+                    <svg
+                      width="35px"
+                      height="35px"
+                      viewBox="0 0 256 256"
+                      id="Flat"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill="#e0e0e0"
+                        d="M108,116a8,8,0,1,1-8-8A7.99993,7.99993,0,0,1,108,116Zm48-8a8,8,0,1,0,8,8A7.99993,7.99993,0,0,0,156,108Zm64,12v96a4.00007,4.00007,0,0,1-6.5332,3.0957L186.667,197.168,159.86621,219.0957a4.00069,4.00069,0,0,1-5.06641,0L128,197.168,101.2002,219.0957a4.00069,4.00069,0,0,1-5.06641,0L69.333,197.168,42.5332,219.0957A4,4,0,0,1,36,216V120a92,92,0,0,1,184,0Zm-8,0a84,84,0,0,0-168,0v87.55908L66.7998,188.9043a4.00069,4.00069,0,0,1,5.06641,0L98.667,210.832,125.4668,188.9043a4.00025,4.00025,0,0,1,5.0664,0L157.333,210.832l26.80078-21.92773a4.00069,4.00069,0,0,1,5.06641,0L212,207.55908Z"
+                      />
+                    </svg>
+                    No Items
+                  </li>
+                )}
 
               {filteredDropdown?.map(({ title, value }, index) => (
                 <li
