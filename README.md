@@ -96,7 +96,7 @@ Insect can be either an input field, a single select field or a multi select fie
 | --- | --- | --- | --- |
 | value | Sets the value of the input field. | *`string`* | 
 | rows | Sets the number of rows for textarea | *`number`* | 
-| onChange | Sets the placeholder for insect component. | *`(e: React.FormEvent<HTMLInputElement>) => void`* | 
+| onChange | Function to trigger when input field value is changed. | *`(e: React.FormEvent<HTMLInputElement>) => void`* | 
 
 <br />
 <br />
